@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
+
 
 function Item({ name, category }) {
+  const [added, setAdded] = useState(false)
+
+  function toggleAdded() {
+    setAdded (!added)
+   }
+
   return (
-    <li className="">
+    <li className={added ? "in-cart" : "out-of-cart"}>
       <span>{name}</span>
       <span className="category">{category}</span>
-      <button className="add">Add to Cart</button>
+      <button onClick={toggleAdded} className="add"> {added ? "Remove from cart!" : "Add to cart!"}</button>
     </li>
   );
 }
